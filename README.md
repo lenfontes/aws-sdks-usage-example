@@ -21,21 +21,23 @@ The project implements a serverless file upload service using AWS S3, showcasing
 - **Clean Architecture**: Separation of concerns with repository pattern
 
 ### Project Structure
+```
 src/
 ├── repository/
-│ ├── paramFactory/ # AWS parameter factories
-│ │ ├── baseFactory.ts # Base abstract factory
-│ │ ├── s3Factory.ts # S3-specific parameter factory
-│ │ ├── constants.ts # AWS defaults and constants
-│ │ └── index.ts # Factory exports
-│ └── repository.ts # S3 repository implementation
+│   ├── paramFactory/        # AWS parameter factories
+│   │   ├── baseFactory.ts   # Base abstract factory
+│   │   ├── s3Factory.ts     # S3-specific parameter factory
+│   │   ├── constants.ts     # AWS defaults and constants
+│   │   └── index.ts        # Factory exports
+│   └── repository.ts       # S3 repository implementation
 ├── services/
-│ └── uploadService.ts # File upload service
+│   └── uploadService.ts    # File upload service
 ├── types/
-│ └── parameterTypes.ts # Type definitions
-├── interfaces.ts # Interface definitions
-├── handler.ts # Lambda handler
-└── main.ts # DI container setup
+│   └── parameterTypes.ts   # Type definitions
+├── interfaces.ts          # Interface definitions
+├── handler.ts            # Lambda handler
+└── main.ts              # DI container setup
+```
 
 ### Implementation Details
 
