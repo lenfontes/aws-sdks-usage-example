@@ -94,6 +94,11 @@ const result = await fileUploadService.uploadFileToS3(input);
 
 ## Getting Started
 
+For detailed documentation, see:
+- [Installation Guide](docs/getting-started/installation.md)
+- [S3 Operations Guide](docs/guides/s3-operations.md)
+- [Testing Guide](docs/guides/testing.md)
+
 1. Install dependencies:
 
 ```bash:README.md
