@@ -1,5 +1,6 @@
 import {PutObjectCommandInput, PutObjectCommandOutput, PutObjectCommand} from '@aws-sdk/client-s3';
 import {Repository} from './repository/repository';
+import {S3ParamInput, S3OperationResponse} from './types/parameterTypes';
 
 /**
  * Symbol for the S3 client.
@@ -61,15 +62,10 @@ export interface IRepository {
   /**
    * Uploads an object to S3.
    *
-   * @param body - The object body to upload.
-   * @returns A Promise that resolves to the PutObjectCommandOutput.
+   * @param input - The S3 parameter input
+   * @returns A Promise that resolves to the S3OperationResponse
    */
-  uploadObject(
-    body: any,
-    receipt?: any,
-    filename?: any,
-    transactionId?: any,
-  ): Promise<PutObjectCommandOutput>;
+  uploadObject(input: S3ParamInput): Promise<S3OperationResponse>;
 }
 
 /**
@@ -91,3 +87,11 @@ export interface IHandler {
    */
   handleS3Event(file: any): Promise<void>;
 }
+
+// Base parameter interfaces
+export interface IAwsParamFactory<TInput, TOutput> {
+  create(input: TInput): TOutput;
+}
+
+// Specific AWS service parameter interfaces
+export interface IS3ParamFactory extends IAwsParamFactory<S3ParamInput, PutObjectCommandInput> {}

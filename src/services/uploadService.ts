@@ -1,7 +1,6 @@
 import {inject, injectable} from 'tsyringe';
-import {PutObjectCommandOutput} from '@aws-sdk/client-s3';
-import {IFileUploadService} from '../interfaces';
-import {IRepository} from '../interfaces';
+import {IFileUploadService, IRepository} from '../interfaces';
+import {S3ParamInput, S3OperationResponse} from '../types/parameterTypes';
 
 /**
  * Service for handling file uploads to S3.
@@ -13,10 +12,10 @@ export class FileUploadService implements IFileUploadService {
   /**
    * Uploads a file to S3.
    *
-   * @param fileData The file data to upload.
-   * @returns A Promise that resolves to the PutObjectCommandOutput.
+   * @param fileData The file data to upload
+   * @returns A Promise that resolves to the S3OperationResponse
    */
-  async uploadFileToS3(fileData: any): Promise<PutObjectCommandOutput> {
+  async uploadFileToS3(fileData: S3ParamInput): Promise<S3OperationResponse> {
     return await this.repository.uploadObject(fileData);
   }
 }
